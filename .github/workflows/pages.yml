@@ -1,4 +1,4 @@
-name: Deploy code documentation to Github Pages
+name: Deploy code documentation to GitHub Pages
 
 on:
   push:
@@ -28,14 +28,16 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
             dotnet-version: 6.x
-      - run: dotnet install -g docfx
-      - run: docfx docfx.json
+      - name: Install DocFx
+        run: dotnet install -g docfx
+      - name: Generate new website content
+        run: docfx docfx.json
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
+          # Upload documentation to GitHub pages
           path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
