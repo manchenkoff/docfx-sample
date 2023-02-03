@@ -29,14 +29,14 @@ jobs:
         with:
             dotnet-version: 6.x
       - run: dotnet install -g docfx
-      - run: docfx docfx_project/docfx.json
+      - run: docfx docfx.json
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: 'docfx_project/_site'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
